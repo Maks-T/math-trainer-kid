@@ -6,6 +6,9 @@ const btnAnswer = document.querySelector('.btn-answer');
 const btnNext = document.querySelector('.btn-next');
 const keyPanel = document.querySelector('.keyPanel');
 
+audioSuccess = new Audio('./assets/sounds/Unlock_level_Game_Sound.mp3');
+audioMistakes = new Audio('./assets/sounds/Bot_Wrong_Answer_3.mp3');
+
 keyPanel.addEventListener('click', (e) => {
   if (e.target.classList.contains('key')) {
     if (e.target.classList.contains('backspace')) {
@@ -22,8 +25,10 @@ btnAnswer.addEventListener('click', () => {
   if (answerElem.innerHTML == num1Elem.innerHTML - num2Elem.innerHTML) {
     answerElem.innerHTML = '✔ ' + answerElem.innerHTML;
     answerElem.classList.add('successAnswer');
+    audioSuccess.play();
   } else {
     answerElem.classList.add('mistakeAnswer');
+    audioMistakes.play();
   }
   btnAnswer.classList.add('hide');
   btnNext.classList.remove('hide');
