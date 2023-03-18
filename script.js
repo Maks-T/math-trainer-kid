@@ -14,6 +14,8 @@ keyPanel.addEventListener('click', (e) => {
     if (e.target.classList.contains('backspace')) {
       if (answerElem.innerHTML.length > 0) {
         answerElem.innerHTML = answerElem.innerHTML.slice(0, -1);
+        answerElem.classList.add('successAnswer');
+        answerElem.classList.remove('mistakeAnswer');
       }
     } else {
       answerElem.innerHTML += e.target.innerHTML;
@@ -24,14 +26,15 @@ keyPanel.addEventListener('click', (e) => {
 btnAnswer.addEventListener('click', () => {
   if (answerElem.innerHTML == num1Elem.innerHTML - num2Elem.innerHTML) {
     answerElem.innerHTML = '✔ ' + answerElem.innerHTML;
-    answerElem.classList.add('successAnswer');
+
     audioSuccess.play();
+
+    btnAnswer.classList.add('hide');
+    btnNext.classList.remove('hide');
   } else {
     answerElem.classList.add('mistakeAnswer');
     audioMistakes.play();
   }
-  btnAnswer.classList.add('hide');
-  btnNext.classList.remove('hide');
 });
 
 btnNext.addEventListener('click', nextProblem);
