@@ -57,4 +57,6 @@ function nextProblem() {
 
   btnAnswer.classList.remove('hide');
   btnNext.classList.add('hide');
+  answerElem.classList.remove('successAnswer');
+  answerElem.classList.remove('mistakeAnswer');
 }
